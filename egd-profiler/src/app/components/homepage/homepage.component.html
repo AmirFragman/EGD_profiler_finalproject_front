@@ -1,0 +1,52 @@
+
+<div fxLayout="row">
+  <mat-card class="card-with-pic">
+    <img matCardImage [src]="imagePath1">
+  </mat-card>
+
+  <mat-card class="card-with-pic">
+    <img matCardImage [src]="imagePath2">
+  </mat-card>
+  <mat-card class="card-with-pic">
+    <img matCardImage [src]="imagePath3">
+  </mat-card>
+  <mat-card class="card-with-pic">
+    <img matCardImage [src]="imagePath4">
+  </mat-card>
+</div>
+
+<div fxLayout="row">
+      <mat-card class="card-with-margin">
+        <mat-card-header>
+          <mat-card-title class="center-bold-title">Welcome to EGD profiler!</mat-card-title> 
+        </mat-card-header>
+
+        <mat-card-content>
+          We take your tournaments information and create a profile with all the
+          info you want to know about your tournaments and games!
+        </mat-card-content>
+        <mat-card-actions align="start"> </mat-card-actions>
+        <mat-card-footer fxLayout="row" fxLayoutAlign="center center">
+          To  <button mat-raised-button color="accent" [routerLink]="['/signup']">Sign up</button>
+          click here
+        </mat-card-footer>
+        
+      </mat-card>
+    
+
+    
+
+      <mat-card class="card-with-margin">
+        <mat-card-header>
+          <mat-card-title class="center-bold-title" fx>Tutorial</mat-card-title>
+          <mat-card-subtitle> </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          press on the menu button on the top left to find all the pages that are already waiting for you!
+          To receive a profile all you have to do is to Sign Up, add your details and the rest is on us!
+        </mat-card-content>
+        <mat-card-actions align="start"> </mat-card-actions>
+        <mat-card-footer>  </mat-card-footer>
+      </mat-card>
+</div>

@@ -1,0 +1,77 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="stepperFormGroup1">
+    <ng-template matStepLabel>Email, Username, and Password</ng-template>
+    <form [formGroup]="stepperFormGroup1">
+      <!-- For email -->
+
+      <input matInput placeholder="Email" formControlName="email" (change)="emailExists($event)" /><br/><br/>
+
+      <div class="col-4" *ngIf="emailExist">
+        <p class="error-message">This email is already in use.</p>
+      </div>
+      <!-- For username -->
+
+        <input matInput placeholder="Username" formControlName="username"
+          (change)="usernameExists($event)" /><br/><br/>
+
+      <div class="col-4" *ngIf="usernameExist">
+        <p class="error-message">This username is already taken.</p>
+      </div>
+      <!-- For password -->
+        <input matInput type="password" placeholder="Password" formControlName="password" />
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="stepperFormGroup2">
+    <ng-template matStepLabel>First Name, Last Name, and EGD ID</ng-template>
+    <form [formGroup]="stepperFormGroup2">
+      <input matInput placeholder="First Name" formControlName="first_name" /><br /><br />
+      <div class="col-4">
+        <p [ngClass]="{'error-message': firstNameErrorMessage}" *ngIf="firstNameErrorMessage">{{ firstNameErrorMessage }}</p>
+      </div>
+      <input matInput placeholder="Last Name" formControlName="last_name" /><br /><br />
+      <div class="col-4">
+        <p [ngClass]="{'error-message': lastNameErrorMessage}" *ngIf="lastNameErrorMessage">{{ lastNameErrorMessage }}</p>
+      </div>
+      <div class="col-4">
+        <p [ngClass]="{'error-message': errorMessage}" *ngIf="errorMessage">{{ errorMessage }}</p>
+      </div>
+      <button mat-button (click)="searchPlayer()">
+        Click here to find your EGD ID</button><br /><br />
+      <mat-select placeholder="Select EGD ID" formControlName="selected_egd_id">
+        <mat-option *ngFor="let player of playerData" [value]="player">
+          {{ player.first_name }} {{ player.last_name }}, {{ player.pin }},
+          {{ player.country_code }}, {{ player.rank }}
+        </mat-option>
+      </mat-select>
+
+      <button mat-button (click)="stepper.previous()">Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="stepperFormGroup3">
+    <ng-template matStepLabel>Birth Date and Gender</ng-template>
+    <form [formGroup]="stepperFormGroup3">
+      <input matInput [matDatepicker]="picker" placeholder="Birth Date" formControlName="birth_date" /><br /><br />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker><br /><br />
+
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="other">Other</mat-radio-button>
+      </mat-radio-group>
+      <br /><br />
+
+      <div>
+        <button mat-button (click)="stepper.previous()">Back</button>
+        <button mat-button type="submit" [disabled]="stepperFormGroup1.invalid" [disabled]="stepperFormGroup2.invalid" (click)="create()">
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

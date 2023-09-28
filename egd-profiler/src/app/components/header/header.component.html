@@ -1,0 +1,52 @@
+<mat-toolbar color="primary" >
+  <mat-toolbar-row>
+    <span>EGD profiler</span>
+    
+  </mat-toolbar-row>
+
+  <mat-toolbar-row fxFlexFill>
+  <!-- Left side -->
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item [routerLink]="['/players/']">All Players</button>
+    <button mat-menu-item [routerLink]="['/tournaments/']">All Tournaments</button>
+  </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon >menu</mat-icon>
+    </button>
+    <button mat-icon-button [routerLink]="['']">
+      <mat-icon>home</mat-icon>
+    </button>
+  
+    <ng-container *ngIf="!isLoggedIn(); else loggedInTemplate">
+      <span>Hello, guest</span>
+    </ng-container>
+    <ng-template #loggedInTemplate>
+      <span>Hello, {{ getUsernameFromLocalStorage() }}</span>
+    </ng-template>
+  <span class="flexExpand"></span>
+
+  <!-- Right side -->
+  <button mat-raised-button color="accent" [routerLink]="['/signup/']">Sign up</button>
+
+  <button mat-icon-button [routerLink]="['/login/']">
+    <mat-icon>login</mat-icon>
+  </button>
+
+ 
+  <button mat-icon-button [matMenuTriggerFor]="lazyMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+
+<mat-menu #lazyMenu ="matMenu" [routerLink]="['/logout/']">
+  <ng-template matMenuContent>
+  <app-logout></app-logout>
+  <button mat-menu-item [routerLink]="['/myaccount/']">
+    My Account
+  </button>
+</ng-template>
+</mat-menu>
+
+</mat-toolbar-row>
+</mat-toolbar>

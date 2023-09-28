@@ -1,0 +1,7 @@
+.input {
+  width: 100px; /* Set the desired width */
+  height: 30px;
+}
+.mat-cell {
+  padding: 0px 8px 8px 0;
+}

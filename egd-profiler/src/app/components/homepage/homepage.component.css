@@ -1,0 +1,30 @@
+.image_class {
+  width: 200px;
+  height: 150px;
+}
+.vertical-center {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+.password-change-form{
+  padding: inherit;
+}
+
+.card-with-margin {
+  margin: 16px; /* Adjust the margin value as needed */
+}
+.card-with-pic {
+  margin: 64px; /* Adjust the margin value as needed */
+}
+
+.card-with-pic {
+  width: calc(25% - 16px); /* 4 cards in a row, adjust as needed */
+  margin: 8px; /* Add margin to separate cards */
+  height: 10%;
+}
+.center-bold-title {
+  text-align: center; /* Center-align the title */
+  font-weight: bold; /* Make the title bold */
+}

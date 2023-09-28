@@ -1,0 +1,25 @@
+
+  <div>
+    <h1>Welcome to your page {{usernameParsed()}}!</h1>
+  </div>
+
+  <div class='container' align="right">
+  <canvas #winsLossesChart height="10px" style="width: 60%"></canvas>
+ 
+  </div>
+  <div>
+    Total Wins Percentage: {{ total_wins_percentage() }}%
+  </div>
+  <div class='container' align="right">
+  <canvas #totalGamesBlackChart height="10px" style="width: 60%"></canvas>
+  </div>
+  
+  <div>
+    Wins Percentage as black: {{ black_wins_percentage() }}%
+  </div>
+  <div class='container' align="right">
+  <canvas #totalGamesWhiteChart height="10px" style="width: 60%"></canvas>
+</div>
+  <div>
+    Wins Percentage as white: {{ white_wins_percentage() }}%
+  </div>
